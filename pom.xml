@@ -47,6 +47,7 @@
         <test.containers.version>1.11.4</test.containers.version>
         <kafka.connect.maven.plugin.version>0.11.1</kafka.connect.maven.plugin.version>
         <confluent.maven.repo>http://packages.confluent.io/maven/</confluent.maven.repo>
+        <io.confluent.license-file-generator.version>[6.0.0-1, 6.0.1-0)</io.confluent.license-file-generator.version>
     </properties>
 
     <repositories>
@@ -381,7 +382,7 @@
                             <dependency>
                                 <groupId>io.confluent</groupId>
                                 <artifactId>licenses</artifactId>
-                                <version>${project.version}</version>
+                                <version>${io.confluent.license-file-generator.version}</version>
                             </dependency>
                         </dependencies>
                     </plugin>
@@ -431,7 +432,7 @@
                             <dependency>
                                 <groupId>io.confluent</groupId>
                                 <artifactId>licenses</artifactId>
-                                <version>${project.version}</version>
+                                <version>${io.confluent.license-file-generator.version}</version>
                             </dependency>
                         </dependencies>
                     </plugin>
