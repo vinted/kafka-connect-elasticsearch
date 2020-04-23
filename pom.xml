@@ -14,6 +14,7 @@
     <artifactId>kafka-connect-elasticsearch</artifactId>
     <packaging>jar</packaging>
     <name>kafka-connect-elasticsearch</name>
+    <version>6.0.0-0</version>
     <organization>
         <name>Confluent, Inc.</name>
         <url>http://confluent.io</url>
