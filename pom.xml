@@ -48,7 +48,6 @@
         <test.containers.version>1.11.4</test.containers.version>
         <kafka.connect.maven.plugin.version>0.11.1</kafka.connect.maven.plugin.version>
         <confluent.maven.repo>http://packages.confluent.io/maven/</confluent.maven.repo>
-        <io.confluent.license-file-generator.version>[6.0.0-0, 6.0.1-0)</io.confluent.license-file-generator.version>
     </properties>
 
     <repositories>
