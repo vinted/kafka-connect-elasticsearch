@@ -31,6 +31,7 @@ import static io.confluent.connect.elasticsearch.bulk.BulkProcessor.BehaviorOnMa
 import static org.apache.kafka.common.config.ConfigDef.Range.between;
 import static org.apache.kafka.common.config.SslConfigs.SSL_ENDPOINT_IDENTIFICATION_ALGORITHM_CONFIG;
 import static org.apache.kafka.common.config.SslConfigs.addClientSslSupport;
+import static io.confluent.connect.elasticsearch.DataConverter.DocumentVersionType;
 
 public class ElasticsearchSinkConnectorConfig extends AbstractConfig {
   private static final String SSL_GROUP = "Security";
@@ -219,6 +220,15 @@ public class ElasticsearchSinkConnectorConfig extends AbstractConfig {
   public static final String PROXY_PASSWORD_DISPLAY = "Proxy Password";
   public static final String PROXY_PASSWORD_DOC = "The password for the proxy host.";
   public static final Password PROXY_PASSWORD_DEFAULT = null;
+
+  public static final String ELASTICSEARCH_DOCUMENT_VERSION_TYPE_CONFIG = "elastic.document.version.type";
+  private static final String ELASTICSEARCH_DOCUMENT_VERSION_TYPE_DOC =
+          "The version type being used by connector. "
+                  + "Values can be " + DocumentVersionType.LEGACY + ", "
+                  + DocumentVersionType.UNUSED + ", "
+                  + DocumentVersionType.MESSAGE_OFFSET + ", "
+                  + DocumentVersionType.MESSAGE_TIMESTAMP + ", "
+                  + DocumentVersionType.COMBINED_TIMESTAMP_OFFSET + ".";
 
   protected static ConfigDef baseConfigDef() {
     final ConfigDef configDef = new ConfigDef();
@@ -622,7 +632,18 @@ public class ElasticsearchSinkConnectorConfig extends AbstractConfig {
         group,
         ++order,
         Width.SHORT,
-        "Write method");
+        "Write method"
+    ).define(
+            ELASTICSEARCH_DOCUMENT_VERSION_TYPE_CONFIG,
+            Type.STRING,
+            "legacy",
+            Importance.LOW,
+            ELASTICSEARCH_DOCUMENT_VERSION_TYPE_DOC,
+            group,
+            ++order,
+            Width.SHORT,
+            "Document version"
+    );
   }
 
   public static final ConfigDef CONFIG = baseConfigDef();
