@@ -221,7 +221,8 @@ public class ElasticsearchSinkConnectorConfig extends AbstractConfig {
   public static final String PROXY_PASSWORD_DOC = "The password for the proxy host.";
   public static final Password PROXY_PASSWORD_DEFAULT = null;
 
-  public static final String ELASTICSEARCH_DOCUMENT_VERSION_TYPE_CONFIG = "elastic.document.version.type";
+  public static final String ELASTICSEARCH_DOCUMENT_VERSION_TYPE_CONFIG =
+          "elastic.document.version.type";
   private static final String ELASTICSEARCH_DOCUMENT_VERSION_TYPE_DOC =
           "The version type being used by connector. "
                   + "Values can be " + DocumentVersionType.LEGACY + ", "

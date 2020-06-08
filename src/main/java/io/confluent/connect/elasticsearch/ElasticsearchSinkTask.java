@@ -101,11 +101,13 @@ public class ElasticsearchSinkTask extends SinkTask {
 
       BulkProcessor.BehaviorOnMalformedDoc behaviorOnMalformedDoc =
           BulkProcessor.BehaviorOnMalformedDoc.forValue(
-              config.getString(ElasticsearchSinkConnectorConfig.BEHAVIOR_ON_MALFORMED_DOCS_CONFIG)
+              config.getString(ElasticsearchSinkConnectorConfig
+                      .BEHAVIOR_ON_MALFORMED_DOCS_CONFIG)
           );
-    DataConverter.DocumentVersionType documentVersionType =
+      DataConverter.DocumentVersionType documentVersionType =
             DataConverter.DocumentVersionType.forValue(
-                    config.getString(ElasticsearchSinkConnectorConfig.ELASTICSEARCH_DOCUMENT_VERSION_TYPE_CONFIG)
+                    config.getString(ElasticsearchSinkConnectorConfig
+                            .ELASTICSEARCH_DOCUMENT_VERSION_TYPE_CONFIG)
             );
       // Calculate the maximum possible backoff time ...
       long maxRetryBackoffMs =

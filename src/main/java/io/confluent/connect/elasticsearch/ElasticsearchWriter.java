@@ -85,7 +85,8 @@ public class ElasticsearchWriter {
     this.flushTimeoutMs = flushTimeoutMs;
     this.dropInvalidMessage = dropInvalidMessage;
     this.behaviorOnNullValues = behaviorOnNullValues;
-    this.converter = new DataConverter(useCompactMapEntries, behaviorOnNullValues, documentVersionType);
+    this.converter = new DataConverter(useCompactMapEntries, behaviorOnNullValues,
+            documentVersionType);
     this.behaviorOnMalformedDoc = behaviorOnMalformedDoc;
 
     bulkProcessor = new BulkProcessor<>(
@@ -123,7 +124,8 @@ public class ElasticsearchWriter {
     private BehaviorOnNullValues behaviorOnNullValues = BehaviorOnNullValues.DEFAULT;
     private BehaviorOnMalformedDoc behaviorOnMalformedDoc;
 
-    private DataConverter.DocumentVersionType documentVersionType;
+    private DataConverter.DocumentVersionType documentVersionType =
+            DataConverter.DocumentVersionType.LEGACY;
 
     public Builder(ElasticsearchClient client) {
       this.client = client;
