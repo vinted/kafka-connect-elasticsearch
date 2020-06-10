@@ -72,7 +72,8 @@ public class DataConverter {
    * @param behaviorOnNullValues behavior for handling records with null values; may not be null
    * @param documentVersionType document version generated with method
    */
-  public DataConverter(boolean useCompactMapEntries, BehaviorOnNullValues behaviorOnNullValues, DocumentVersionType documentVersionType) {
+  public DataConverter(boolean useCompactMapEntries, BehaviorOnNullValues behaviorOnNullValues,
+                       DocumentVersionType documentVersionType) {
     this.useCompactMapEntries = useCompactMapEntries;
     this.behaviorOnNullValues =
         Objects.requireNonNull(behaviorOnNullValues, "behaviorOnNullValues cannot be null.");
@@ -189,15 +190,15 @@ public class DataConverter {
     return new IndexableRecord(new Key(index, type, id), payload, version);
   }
 
-  private Long getIndexableRecordVersion(SinkRecord record, boolean ignoreKey){
+  private Long getIndexableRecordVersion(SinkRecord record, boolean ignoreKey) {
     Long version;
-    switch (documentVersionType){
+    switch (documentVersionType) {
       case LEGACY:
         version = ignoreKey ? null : record.kafkaOffset();
         break;
       case COMBINED_TIMESTAMP_OFFSET:
-        long extend = record.kafkaOffset() % 10_000l;
-        version = 10_000l * (record.timestamp() + (extend == 0 ? 1 : 0)) + extend;
+        long extend = record.kafkaOffset() % 10_000L;
+        version = 10_000L * (record.timestamp() + (extend == 0 ? 1 : 0)) + extend;
         break;
       case MESSAGE_TIMESTAMP:
         version = record.timestamp();
