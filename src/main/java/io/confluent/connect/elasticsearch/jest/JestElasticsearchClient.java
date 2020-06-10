@@ -552,9 +552,6 @@ public class JestElasticsearchClient implements ElasticsearchClient {
     if (record.version != null) {
       req.setParameter("version_type", "external").setParameter("version", record.version);
     }
-    if (retryOnConflict > 0) {
-      req.setParameter("retry_on_conflict", retryOnConflict);
-    }
     return req.build();
   }
 
@@ -566,9 +563,6 @@ public class JestElasticsearchClient implements ElasticsearchClient {
     if (record.version != null) {
       req.setParameter("version_type", "external").setParameter("version", record.version);
     }
-    if (retryOnConflict > 0) {
-      req.setParameter("retry_on_conflict", retryOnConflict);
-    }
     return req.build();
   }
 
@@ -579,9 +573,6 @@ public class JestElasticsearchClient implements ElasticsearchClient {
         .index(record.key.index)
         .type(record.key.type)
         .id(record.key.id);
-    if (record.version != null) {
-      req.setParameter("version_type", "external").setParameter("version", record.version);
-    }
     if (retryOnConflict > 0) {
       req.setParameter("retry_on_conflict", retryOnConflict);
     }
